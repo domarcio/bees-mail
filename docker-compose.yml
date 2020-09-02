@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  grcp:
+    image: bees_mail_grcp
+    build:
+      context: ./
+      dockerfile: ./container/grcp/Dockerfile
+    ports:
+      - "50051:50051"
+  frontend:
+    image: bees_mail_frontend:latest
+    build:
+      context: ./
+      dockerfile: ./container/frontend/Dockerfile
+    ports:
+      - "49160:8080"

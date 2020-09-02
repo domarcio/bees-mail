@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package private;
+option go_package = "grpc/server/proto";
+
+service Services {
+    rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {}
+}
+
+message SayHelloRequest {
+    string name = 1;
+}
+
+message SayHelloResponse {
+    string regards = 1;
+}
