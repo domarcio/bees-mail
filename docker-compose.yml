@@ -7,10 +7,10 @@ services:
       dockerfile: ./container/grcp/Dockerfile
     ports:
       - "50051:50051"
-  frontend:
-    image: bees_mail_frontend:latest
+  backend:
+    image: bees_mail_backend:latest
     build:
       context: ./
-      dockerfile: ./container/frontend/Dockerfile
+      dockerfile: ./container/backend/Dockerfile
     ports:
       - "49160:8080"
