@@ -36,7 +36,4 @@ RUN set -ex && \
         -ldflags '-extldflags "-static"' && \
   mv ./server /usr/bin/server
 
-# Set the binary as the entrypoint of the container
-ENTRYPOINT [ "server" ]
-
 EXPOSE ${GRPC_PORT}

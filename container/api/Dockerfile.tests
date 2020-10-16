@@ -1,0 +1,3 @@
+FROM e-goi-api
+
+ENTRYPOINT [ "/bin/sh", "-c", "vendor/bin/phpunit -c module/Category/test/phpunit.xml --coverage-html www/coverage" ]

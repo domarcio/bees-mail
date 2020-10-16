@@ -1,0 +1,20 @@
+FROM php:7.4-cli-alpine3.12
+
+RUN apk add --no-cache $PHPIZE_DEPS --update --no-cache libgd libpng-dev libjpeg-turbo-dev freetype-dev zip
+RUN pecl install xdebug-2.9.8
+RUN docker-php-ext-enable xdebug
+
+RUN mkdir -p /app
+RUN rm -rf /app
+ENV APP_DIR /app
+
+WORKDIR $APP_DIR
+
+COPY . .
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install --no-interaction
+
+EXPOSE 80
+
+CMD ["php", "-S", "0.0.0.0:80", "-t", "/app/public", "/app/public/index.php"]
