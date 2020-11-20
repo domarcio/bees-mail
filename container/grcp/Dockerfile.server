@@ -3,7 +3,7 @@ FROM golang:latest
 LABEL maintainer="Marcio Vinicius <marciovinicius55@gmail.com>"
 
 # Create environment variables
-ENV BASE_PATH /go/src/github.com/domarcio/bees-mail/grpc/server
+ENV BASE_PATH /app
 ENV GRPC_PORT 50051
 
 # Create base path to container
@@ -12,10 +12,6 @@ RUN mkdir -p ${BASE_PATH}
 # Copy all files in root path (from project) and setting the base path as workspace
 COPY ./grpc/server ${BASE_PATH}
 WORKDIR ${BASE_PATH}
-
-RUN go mod init
-
-RUN go get -u google.golang.org/grpc
 
 ## NA: Special thanks to the https://ops.tips/blog/dockerfile-golang/
 # 0.  Set some shell flags like `-e` to abort the

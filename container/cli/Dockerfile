@@ -8,7 +8,7 @@ RUN unzip protoc-3.13.0-linux-x86_64.zip -d protoc3
 RUN mv protoc3/bin/* /usr/local/bin/
 RUN mv protoc3/include/* /usr/local/include/
 
-FROM bees-mail-grpc
+FROM bees-mail-grpc-server
 
 RUN cd /tmp
 WORKDIR /tmp
